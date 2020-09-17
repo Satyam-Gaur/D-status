@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="./static/register.css">
+    <script src="./static/register.js"></script>
+
+    <title>DAILY STATUS</title>
+</head>
+<body >
+
+    <!-- navigation bar -->
+    <nav class="navbar navbar-expand-sm container-fluid" >
+        <ul class="navbar-nav" >
+            <h2 style="color:white;">Daily Status</h2>
+        </ul>
+    </nav>
+    <div class="container-fluid ">
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+       
+    <div class="row">
+
+    <div class="col-sm-2">
+    </div>
+    <div class=" col-sm-4"  >
+        <!-- <img src="./static/tcs_img.jpg" alt="image kho gyi" height="100%" width="100%"> -->
+    </div>
+
+    <div class=" col-sm-4 div-form" style=" padding:5%" >
+
+         <form action="/register" id="frm2" method="POST">
+            <div style="color:red;text-align:center;"> {{d}}</div>
+
+             {% csrf_token %}
+
+            <h3>Register Here</h3>
+            <div class="form-group" >
+              <label for="username" style="color:white">Emp id:</label><br>
+              {{form.username}}
+            </div>
+            
+            <div class="form-group" >
+                <label for="first_name" style="color:white">First Name:</label><br>
+                {{form.first_name}}
+            </div>
+
+            <div class="form-group" >
+                <label for="last_name" style="color:white">Last Name:</label><br>
+                {{form.last_name}}
+            </div>
+
+            <div class="form-group" >
+                <label for="email" style="color:white">Email username:</label><br>
+                {{form.email}}
+            </div>
+            
+            <div class="form-group" >
+              <label for="pwd1" style="color:white">Password:</label><br>
+                {{form.password2}}
+            </div>
+
+            <div class="form-group" >
+                <label for="pwd2" style="color:white">Confirm Password:</label><br>
+                {{form.password1}}
+            </div>
+            <button type="submit" id="regsub" class="btn btn-primary">Submit</button>
+            <a href="login"><button type="button" id="regcan" class="btn btn-danger">Cancel</button></a>
+            
+            {{form.errors}}
+          </form>
+      
+          <div style="color:white">Already have have an acccount?</div>
+          <a href="login" style="color:aquamarine">Login here</a>
+
+       </div>    
+    </div>
+    
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark container-fluid">
+        <h3 style="color:white;">Daily Status</h3> &nbsp;&nbsp;&nbsp;&nbsp;
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a style="color:white;float:right" href="home"><h5>Home</h5></a></li>&nbsp;&nbsp;
+            <li class="nav-item active"><a style="color:white;float:right" href="history"><h5>History</h5></a></li>
+        </ul>
+
+        <h5><a style="color:white;float:right" href="logout"> Logout</a></h5>&nbsp;&nbsp;
+        <h5><a style="color:white;float:right" href="help">About</a></h5>
+    </nav>
+
+
+    <div style="color:red">
+        {%for message in messages%}
+            <p><h5 style="text-align:center;color:red;">{{message}}</h5></p>
+        {%endfor%}
+    </div>
+
+    <h5 style="text-align: center;">&nbsp;&nbsp;Enter here the project details of all the associates,or to alter them.</h5>
+    <div class="container-fluid" style="padding-top:5%">
+        
+        <form action="update_project" method="POST">
+            <div class="container-fluid">
+            <div class="row">
+            {%csrf_token%}
+                    <div class="col-sm-2">{{form.username.label}}{{form.username}}</div>
+                    <div class="col-sm-2">{{form.project1.label}}{{form.project1}}</div>
+                    <div class="col-sm-2">{{form.project2.label}}{{form.project2}}</div>
+                    <div class="col-sm-2">{{form.project3.label}}{{form.project3}}</div>
+                    <div class="col-sm-2">{{form.project4.label}}{{form.project4}}</div>
+                    <div class="col-sm-2">{{form.project5.label}}{{form.project5}}</div>
+                    <div class="col-sm-2">{{form.project6.label}}{{form.project6}}</div>
+                    <div class="col-sm-2">{{form.project7.label}}{{form.project7}}</div>
+                    <div class="col-sm-2">{{form.project8.label}}{{form.project8}}</div>
+                    <div class="col-sm-2">{{form.project9.label}}{{form.project9}}</div>
+                    <div class="col-sm-2">{{form.project10.label}}{{form.project10}}</div>
+                    <div class="col-sm-2"><br> <button type="submit" class="btn btn-dark">Submit</button></div>
+            </div>
+            </div>
+        </form>
+    </div>
+    <br>
+    <h5 style="text-align: center;">&nbsp;&nbsp;Here is project details for all the associates.</h5>
+    <div class="container mt-3">
+        <table class=" table-striped table-bordered table mytable">
+            <thead class="thead-dark">
+                <th>Emp-ID</th>
+                <th>Name</th>
+                <th>Project 1</th>
+                <th>Project 2</th>
+                <th>Project 3</th>
+                <th>project 4</th>
+                <th>Project 5</th>
+                <th>Project 6</th>
+                <th>Project 7</th>
+                <th>Project 8</th>
+                <th>Project 9</th>
+                <th>Project 10</th>
+            </thead>
+
+
+            {% for x in proj %}
+            <tr>
+                <td>{{x.user}}</td>
+                <td>{{x.name}}</td>
+                <td>{{x.project1}}</td>
+                <td>{{x.project2}}</td>
+                <td>{{x.project3}}</td>
+                <td>{{x.project4}}</td>
+                <td>{{x.project5}}</td>
+                <td>{{x.project6}}</td>
+                <td>{{x.project7}}</td>
+                <td>{{x.project8}}</td>
+                <td>{{x.project9}}</td>
+                <td>{{x.project10}}</td>          
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+
+
+    <div style="margin-top:4%;background:black;padding:1%;color:white;bottom:0px;">
+        <h6>&copy; <b>EAS</b> HCM</h6>
+    </div>
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+                $(".mytable").DataTable();
+    </script>
+    
+</body>
+</html>

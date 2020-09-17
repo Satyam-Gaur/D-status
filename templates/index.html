@@ -1,0 +1,78 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel= "stylesheet" href = "./static/index.css">
+    <script src="./static/index.js"></script>
+    <!-- <link rel="stylesheet" href="{% static '=index.css' %}"> -->
+    <title>DAILY STATUS</title>
+</head>
+<body >
+    <!-- bg-dark -->
+    <!-- navigation bar -->
+    <nav class="navbar navbar-expand-sm container-fluid" >
+        <ul class="navbar-nav" >
+            <h2 style="color:white;">Daily Status</h2>
+        </ul>
+    </nav>
+
+    
+
+    <div class="container-fluid ">
+
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    <div class="row">
+
+    <div class="col-sm-2">
+    </div>
+    <div class=" col-sm-4"  >
+        <!-- <img src="./static/tcs_img.jpg" alt="image kho gyi" height="100%" width="100%"> -->
+    </div>
+    <div class=" col-sm-4 div-form" style=" padding:5%" >
+        
+        <form action="login" id="frm1" method="POST" >
+
+        {% for message in messages%}
+            <p><h5 style="text-align:center;color:red;">{{message}}</h5></p>
+        {% endfor %}
+
+        {% csrf_token %}
+           <h3 style="color:white">Login Here</h3>
+           <div class="form-group" >
+             <label for="email" style="color:white">Emp Id:</label>
+             <input type="number" class="form-control" required placeholder="Enter Emp Id" id="username" size ="15" name="username">
+           </div>
+           <div class="form-group" >
+             <label for="pwd" style="color:white">Password:</label> 
+             <input type="password" class="form-control" required placeholder="Enter password" id="pwd" size ="15" name="password">
+           </div>
+           <button type="submit" class="btn btn-primary">Submit</button>
+           <button id="logcan" type="button" class="btn btn-danger"  >Clear</button>
+         </form>
+         <div id = "txt1" style="color:white">Do not have an acccount?</div>
+         <a href="register" style="color:aquamarine" >Register Here</a>
+
+       </div>   
+       </div> 
+       </div>
+    
+
+
+</body>
+</html>

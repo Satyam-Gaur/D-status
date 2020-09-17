@@ -1,0 +1,94 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="./static/home.css"> 
+
+    <title> Previous Status</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm bg-dark container-fluid">
+        <h3 style="color:white;">Daily Status</h3> &nbsp;&nbsp;&nbsp;&nbsp;
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a style="color:white;float:right" href="home"><h5>Home</h5></a></li>&nbsp;&nbsp;
+            <li class="nav-item active"><a style="color:white;float:right" href="history"><h5>History</h5></a></li>
+        </ul>
+
+        <h5><a style="color:white;float:right" href="logout"> Logout</a></h5>&nbsp;&nbsp;
+        <h5><a style="color:white;float:right" href="help">About</a></h5>
+    </nav>
+
+    <div>  &nbsp; <h5> &nbsp;&nbsp; Hello, {{fname}} Please enter your status for the day!!</h5> </div>
+    {{all_user}}
+    <div class="container-fluid">
+        <div class="row">
+
+        <div class="col-sm-1"></div>
+
+        <!-- Form Column -->
+        <div class="col-sm-5" style="padding-top:5%">
+            <form action="home" method="post">
+                {%csrf_token%}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-dark">Submit</button>
+                &nbsp;&nbsp; <button type="button" class="btn btn-danger clear">Clear</button>
+            </form>
+        </div>
+
+        <!-- Data Presentaion Container #dee2e6-->
+
+        <div class="col-sm-5 container padding-bottom:2%" id="presentation">
+
+            <h4 style="margin-top:5%"> Status Updated on : {{user_data.updated_on.date}}, {{user_data.updated_on.time}}</h4>
+            <br>
+            <div class="row">
+                <div class="col-sm-12">
+                    <b>&bull;T- factor: </b> <br> {{user_data.t_factor}} <hr>
+                </div>
+
+                <div class="col-sm-12">
+                    <b>&bull;Projects : </b> <br> {{user_data.projects}} <hr>
+                </div>    
+                
+                <div class="col-sm-12">
+                    <b>&bull;Trainings Assessed: </b> <br> {{user_data.trainings}} <hr>
+                </div>
+                
+                <div class="col-sm-12">
+                    <b>&bull;Upcoming Leave: </b> <br> {{user_data.leaves}} <hr>
+                </div>
+              
+                <div class="col-sm-12 ">
+                    <b>&bull;Status : </b> <br> {{user_data.status}} 
+                <br> <br>                 
+                <a href="history" ><button type="submit" class="btn btn-dark">All Status</button></a>
+                
+                </div>
+            </div>
+
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+    </div>
+
+    <div style="margin-top:4%;background:black;padding:1%;color:white;bottom:0px;">
+        <h6>&copy; <b>EAS</b> HCM</h6>
+    </div>
+
+    <script>
+        $(".clear").click(function(){
+            $(".form-control").val('')
+        })
+    </script>
+</body>
+
+</html>
